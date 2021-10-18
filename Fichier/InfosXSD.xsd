@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<xsd:simpleType name="positiveInteger" id="positiveInteger">
-		<xsd:restriction base="xsd:nonNegativeInteger">
-			<xsd:minInclusive value="1"/>
-		</xsd:restriction>
-	</xsd:simpleType>
+	<xs:simpleType name="positiveInteger" id="positiveInteger">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:minInclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
 	
 	<xs:element name="Acteur">
 		<xs:complexType>
@@ -36,19 +36,19 @@
 	</xs:element>
 	
 	<xs:element name="Td">
-		<xs:complexType>
-			<xs:sequence>
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0" maxOccurs="1">
 				<xs:element name="Genre"/>	
 				<xs:element name="Directeur"/>
 				<xs:element name="Acteur"/>
-			</xs:sequence>
+			</xs:choice>
 		</xs:complexType>
 	</xs:element>
 	
 	<xs:element name="List">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Td"/>				
+				<xs:element name="Td" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
